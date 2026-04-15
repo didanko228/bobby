@@ -3,6 +3,7 @@ package de.johni0702.minecraft.bobby;
 import de.johni0702.minecraft.bobby.ext.LightEngineExt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.extract.LevelExtractor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.nbt.ListTag;
@@ -41,7 +42,7 @@ public class FakeChunk extends LevelChunk {
 
         Minecraft client = Minecraft.getInstance();
         double gamma = client.options.gamma().get();
-        LevelRenderer worldRenderer = client.levelRenderer;
+        LevelExtractor worldRenderer = client.levelExtractor;
 
         LevelLightEngine lightingProvider = getLevel().getLightEngine();
         LightEngineExt blockLightProvider = LightEngineExt.get(lightingProvider.getLayerListener(LightLayer.BLOCK));

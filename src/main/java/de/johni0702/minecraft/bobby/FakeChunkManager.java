@@ -384,7 +384,7 @@ public class FakeChunkManager {
     }
 
     public void loadEmptySectionsOfFakeChunk(int x, int z, LevelChunk chunk) {
-        LongOpenHashSet emptySections = clientChunkManager.getLoadedEmptySections();
+        LongOpenHashSet emptySections = clientChunkManager.addedEmptySections();
         LevelChunkSection[] chunkSections = chunk.getSections();
         for (int i = 0; i < chunkSections.length; i++) {
             LevelChunkSection chunkSection = chunkSections[i];
@@ -433,7 +433,7 @@ public class FakeChunkManager {
             } else {
                 unloadLightData.run();
 
-                LongOpenHashSet emptySections = clientChunkManager.getLoadedEmptySections();
+                LongOpenHashSet emptySections = clientChunkManager.removedEmptySections();
                 LevelChunkSection[] chunkSections = chunk.getSections();
                 for (int i = 0; i < chunkSections.length; i++) {
                     emptySections.remove(SectionPos.asLong(x, chunk.getSectionYFromSectionIndex(i), z));
