@@ -51,7 +51,7 @@ dependencies {
 	include("com.typesafe:config:$hoconVersion")
 
 	"sodium06CompileOnly"("maven.modrinth:sodium:$sodium06Version")
-	compileOnly("maven.modrinth:starlight:$starlightVersion")
+	//compileOnly("maven.modrinth:starlight:$starlightVersion")
 	compileOnly("ca.stellardrift:confabricate:$confabricateVersion")
 	implementation("me.shedaniel.cloth:cloth-config-fabric:$clothConfigVersion")
 	implementation("com.terraformersmc:modmenu:$modMenuVersion")
