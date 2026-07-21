@@ -34,13 +34,13 @@ public abstract class ClientPacketListenerMixin implements ClientPacketListenerE
     //
     @Inject(method = "handleLevelChunkWithLight", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/ClientPacketListener;updateLevelChunk(IILnet/minecraft/network/protocol/game/ClientboundLevelChunkPacketData;)V", shift = At.Shift.AFTER))
     private void storeInitialLightData(ClientboundLevelChunkWithLightPacket packet, CallbackInfo ci) {
-        int chunkX = packet.getX();
-        int chunkZ = packet.getZ();
+        int chunkX = packet.x();
+        int chunkZ = packet.z();
         LevelChunk chunk = this.level.getChunkSource().getChunk(chunkX, chunkZ, ChunkStatus.FULL, false);
         if (chunk == null || chunk instanceof FakeChunk) {
             return; // failed to load, ignore
         }
-        WorldChunkExt.get(chunk).bobby_setInitialLightData(packet.getLightData());
+        WorldChunkExt.get(chunk).bobby_setInitialLightData(packet.lightData());
     }
 
     // Once MC does actually load the light data, we can drop our manually kept light data, so it can be GCed.
